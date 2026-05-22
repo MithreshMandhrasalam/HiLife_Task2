@@ -1,45 +1,30 @@
-/* ==== CSS Custom Properties (Design Tokens) ==== */
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
 :root {
-  /* Color Palette — Purple/Violet theme matching reference */
-  --primary:        #6C2BD9;   /* core violet-purple */
-  --primary-dark:   #4B1FA0;   /* darker shade for depth */
-  --primary-light:  #9B5FEF;   /* lighter tint */
-  --accent:         #A855F7;   /* bright accent purple */
-  --bg-light:       #ffffff;   /* page background */
-  --bg-grey:        #f5f5f5;   /* subtle grey sections */
-  --text-dark:      #1a1a2e;   /* almost-black headings/body */
-  --text-mid:       #555577;   /* mid-tone body text */
-  --text-light:     #ffffff;   /* white text on dark bg */
-
-  /* Typography */
+  --primary:     #6C2BD9;   /* core violet-purple */
+  --bg-light:    #ffffff;
+  --bg-grey:     #f5f5f5;
+  --text-dark:   #1a1a2e;
+  --text-mid:    #555577;
+  --text-light:  #ffffff;
   --font-primary: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* ==== Global Styles ==== */
-html, body {
-  overflow-x: hidden;
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
-@media (max-width: 360px) {
-  .container {
-    padding: 0 0.5rem;
-  }
-  .hero {
-    padding: 4rem 0 2rem;
-  }
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-  .nav-buttons li a {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.75rem;
-  }
-}
-
 
 html {
-  font-size: 100%; /* 16px base */
+  font-size: 100%;
   scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 body {
@@ -48,11 +33,7 @@ body {
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.5;
-  padding-top: 80px; /* offset fixed navbar */
-}
-
-* {
-  box-sizing: border-box;
+  padding-top: 80px;
 }
 
 .container {
@@ -61,7 +42,13 @@ body {
   padding: 0 1rem;
 }
 
-/* ==== Navbar ==== */
+.center {
+  text-align: center;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 .navbar {
   position: fixed;
   top: 0;
@@ -111,8 +98,7 @@ body {
 
 .nav-buttons li a:hover,
 .nav-buttons li a.active-link {
-  background: rgba(255,255,255,0.18);
-  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .nav-buttons li:first-child a {
@@ -122,7 +108,7 @@ body {
 
 .nav-buttons li:first-child a:hover,
 .nav-buttons li:first-child a.active-link {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   color: var(--primary);
 }
 
@@ -136,7 +122,9 @@ body {
   text-decoration: none;
 }
 
-/* ==== Hero ==== */
+/* ============================================================
+   HERO
+   ============================================================ */
 .hero {
   background: var(--primary);
   color: var(--text-light);
@@ -146,7 +134,6 @@ body {
   overflow: hidden;
 }
 
-/* Decorative circle — matches reference image */
 .hero::after {
   content: '';
   position: absolute;
@@ -156,7 +143,7 @@ body {
   width: clamp(280px, 40vw, 500px);
   height: clamp(280px, 40vw, 500px);
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   pointer-events: none;
 }
 
@@ -183,18 +170,22 @@ body {
   opacity: 0.9;
 }
 
-/* ==== Features ==== */
+/* ============================================================
+   FEATURES
+   ============================================================ */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: -4rem;   /* pull up over hero bottom */
+  margin-top: -4rem;
   position: relative;
   z-index: 2;
   padding-bottom: 2rem;
 }
 
-.feature_1, .feature_2, .feature_3 {
+.feature_1,
+.feature_2,
+.feature_3 {
   padding: 2rem;
   border-radius: 8px;
 }
@@ -202,21 +193,26 @@ body {
 .feature_1 {
   background: var(--text-light);
   color: var(--text-dark);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.feature_2, .feature_3 {
+.feature_2,
+.feature_3 {
   background: transparent;
   color: var(--text-light);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.feature_1 h3, .feature_2 h3, .feature_3 h3 {
+.feature_1 h3,
+.feature_2 h3,
+.feature_3 h3 {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
-.feature_1 p, .feature_2 p, .feature_3 p {
+.feature_1 p,
+.feature_2 p,
+.feature_3 p {
   font-size: 0.875rem;
   line-height: 1.6;
   opacity: 0.9;
@@ -241,27 +237,20 @@ body {
   font-size: 0.75rem;
 }
 
-/* ==== Services ==== */
-.services {
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about {
   padding: 5rem 0;
-  background: var(--bg-grey);
-  text-align: center;
 }
 
-.services-text {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 1.25rem;
-}
-
-/* ==== About ==== */
 .about h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
 .about-text {
-  color: #000;
+  color: var(--text-dark);
   max-width: 600px;
   margin: 0 auto 2rem;
 }
@@ -275,9 +264,27 @@ body {
 .about img {
   width: 100%;
   margin-top: 2rem;
+  display: block;
 }
 
-/* ==== Quote Section ==== */
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services {
+  padding: 5rem 0;
+  background: var(--bg-grey);
+  text-align: center;
+}
+
+.services-text {
+  font-size: 1rem;
+  color: var(--text-mid);
+  margin-top: 1.25rem;
+}
+
+/* ============================================================
+   QUOTE SECTION
+   ============================================================ */
 .quote-section {
   background: var(--primary);
   color: var(--text-light);
@@ -301,11 +308,9 @@ body {
   letter-spacing: 1px;
 }
 
-/* ==== Projects ==== */
-.projects {
-  padding: 6rem 0;
-}
-
+/* ============================================================
+   SHARED SECTION LABELS
+   ============================================================ */
 .section-subtitle {
   font-size: 0.75rem;
   font-weight: 700;
@@ -315,14 +320,21 @@ body {
   margin: 0 0 0.5rem;
 }
 
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.projects {
+  padding: 6rem 0;
+}
+
 .section-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
-  flex-wrap: wrap;   /* allow wrap on small screens */
 }
 
 .section-header h2 {
@@ -331,7 +343,6 @@ body {
   color: var(--text-dark);
 }
 
-/* Filter buttons — active = purple pill */
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -385,14 +396,14 @@ body {
 .project-card h4 {
   margin: 0.75rem 1rem 1rem;
   font-size: 0.9rem;
-  text-align: left;
-  opacity: 0.9;
 }
 
-/* ==== Achievement ==== */
+/* ============================================================
+   ACHIEVEMENT
+   ============================================================ */
 .Achivement {
   position: relative;
-  background: url('resources/background.png') no-repeat center/cover;
+  background: url('resources/background.png') no-repeat center / cover;
   padding: 6rem 0;
   color: var(--text-light);
 }
@@ -433,7 +444,9 @@ body {
   text-transform: uppercase;
 }
 
-/* ==== Blog ==== */
+/* ============================================================
+   BLOG
+   ============================================================ */
 .blog {
   padding: 6rem 0;
 }
@@ -445,24 +458,28 @@ body {
 }
 
 .blog-card {
-  background: var(--text-light);
+  background: var(--bg-grey);
   border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .blog-card img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
+  display: block;
 }
 
 .blog-card h3 {
   font-size: 1rem;
   margin: 1rem;
   line-height: 1.5;
+  color: var(--text-dark);
 }
 
-/* ==== Footer ==== */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
   background: var(--primary);
   color: var(--text-light);
@@ -473,7 +490,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .footer-grid > div {
@@ -496,10 +513,19 @@ body {
   opacity: 0.8;
 }
 
-/* ==== Media Queries ==== */
+/* ============================================================
+   MOBILE MENU LOCK
+   ============================================================ */
+.menu-open {
+  overflow: hidden;
+}
+
+/* ============================================================
+   MEDIA QUERIES — Tablet (≤ 768px)
+   ============================================================ */
 @media (max-width: 768px) {
 
-  /* --- Navbar --- */
+  /* Navbar */
   .menu-toggle {
     display: block;
   }
@@ -526,52 +552,50 @@ body {
 
   .navbar.open .nav-buttons {
     display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .navbar.open .nav-buttons li {
     margin: 1rem 0;
   }
 
-  /* --- Hero --- */
+  /* Hero */
   .hero {
     text-align: center;
-    padding: 5rem 0 5rem;
+    padding: 5rem 0;
   }
 
   .hero h1 {
     font-size: 2rem;
   }
 
-  /* --- Features --- */
+  /* Features */
   .features {
-    margin-top: 1rem;   /* don't pull up on mobile — hero is shorter */
+    margin-top: 1rem;
     grid-template-columns: 1fr;
   }
 
-  .feature_2, .feature_3 {
+  .feature_2,
+  .feature_3 {
     color: var(--text-dark);
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  /* --- About --- */
+  /* About */
   .about {
     padding: 3rem 0;
   }
 
-  /* --- Quote --- */
+  /* Quote */
   .quote {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
 
-  /* --- Projects --- */
+  /* Projects */
   .projects {
     padding: 3rem 0;
   }
 
-  /* Stack title above filters on mobile */
   .section-header {
     flex-direction: column;
     align-items: flex-start;
@@ -581,12 +605,11 @@ body {
     width: 100%;
   }
 
-  /* 1 column grid on mobile */
   .project-grid {
     grid-template-columns: 1fr;
   }
 
-  /* --- Blog --- */
+  /* Blog */
   .blog {
     padding: 3rem 0;
   }
@@ -595,13 +618,9 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* --- Achievement --- */
+  /* Achievement */
   .Achivement {
     padding: 3rem 0;
-  }
-
-  .stats-content {
-    gap: 1.5rem;
   }
 
   .numbers {
@@ -611,7 +630,7 @@ body {
     gap: 2rem;
   }
 
-  /* --- Footer --- */
+  /* Footer */
   .footer {
     padding: 3rem 0;
   }
@@ -629,12 +648,11 @@ body {
   }
 }
 
-/* Prevent background scrolling when mobile menu is open */
-.menu-open {
-  overflow: hidden;
-}
-
+/* ============================================================
+   MEDIA QUERIES — Mobile (≤ 480px)
+   ============================================================ */
 @media (max-width: 480px) {
+
   .navbar {
     padding: 0.75rem 1rem;
   }
@@ -656,14 +674,8 @@ body {
     font-size: 0.9rem;
   }
 
-  .section-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .about h2 {
-    font-size: 1.5rem;
-  }
-
+  .section-header h2,
+  .about h2,
   .stats-content h2 {
     font-size: 1.5rem;
   }
@@ -677,7 +689,11 @@ body {
   }
 }
 
+/* ============================================================
+   MEDIA QUERIES — Small Mobile (≤ 360px)
+   ============================================================ */
 @media (max-width: 360px) {
+
   .container {
     padding: 0 0.75rem;
   }
@@ -695,11 +711,3 @@ body {
     font-size: 0.75rem;
   }
 }
-
-/* ==== Utility classes ==== */
-.text-center { text-align: center; }
-.flex { display: flex; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
-.gap-1 { gap: 0.25rem; }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 1rem; }

@@ -188,6 +188,16 @@ body {
   background: transparent;
   color: var(--text-light);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.feature_2:hover,
+.feature_3:hover {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-top: 1px solid transparent;
 }
 
 .feature_1 h3,

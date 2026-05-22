@@ -241,6 +241,38 @@ body {
     margin: 0;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .navbar .nav-buttons {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #7641FC;
+        position: absolute;
+        top: 60px; /* height of navbar */
+        left: 0;
+        padding: 10px 0;
+    }
+    .navbar.open .nav-buttons {
+        display: flex;
+    }
+    .nav-buttons li {
+        margin: 5px 0;
+        text-align: center;
+    }
+}
+
 .filters button {
     border: none;
     background: none;

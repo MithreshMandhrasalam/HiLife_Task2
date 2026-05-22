@@ -14,6 +14,7 @@
 
     <!-- ── Navbar ── -->
     <nav class="navbar container">
+        <div class="logo">STARTUPLY.</div>
         <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
         <ul class="nav-buttons">
             <li><a href="#home">Home</a></li>
@@ -25,43 +26,46 @@
             <li><a href="login.html">Login</a></li>
         </ul>
         <a class="button" href="signup.html">SIGN UP FREE</a>
-        <div class="logo">STARTUPLY.</div>
     </nav>
 
-    <!-- ── Hero ── -->
-    <section id="home" class="hero">
-        <div class="container">
-            <p class="tagline">WE ARE HARD, WE PAY HARD</p>
-            <h1>WE ARE A DESIGN &amp;<br>DEVELOPMENT AGENCY.</h1>
-            <p class="hero-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-        </div>
-    </section>
+    <!-- ── Hero + Features (shared purple background) ── -->
+    <div class="hero-features-wrapper">
 
-    <!-- ── Features ── -->
-    <div class="features container">
-        <div class="feature_1">
-            <h3>Web Development</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-            <ul>
-                <li>Web Design</li>
-                <li>Online Catalogues</li>
-                <li>Portal Systems</li>
-            </ul>
-            <a href="readmore.html">READ MORE</a>
+        <section id="home" class="hero">
+            <div class="container">
+                <p class="tagline">WE ARE HARD, WE PAY HARD</p>
+                <h1>WE ARE A DESIGN &amp;<br>DEVELOPMENT AGENCY.</h1>
+                <p class="hero-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </section>
+
+        <!-- ── Features ── -->
+        <div class="features container">
+            <div class="feature_1">
+                <h3>Web Development</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <ul>
+                    <li>Web Design</li>
+                    <li>Online Catalogues</li>
+                    <li>Portal Systems</li>
+                </ul>
+                <a href="readmore.html">READ MORE</a>
+            </div>
+
+            <div class="feature_2">
+                <h3>Graphic Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
+
+            <div class="feature_3">
+                <h3>Internet Marketing</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
         </div>
 
-        <div class="feature_2">
-            <h3>Graphic Design</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-        </div>
-
-        <div class="feature_3">
-            <h3>Internet Marketing</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-        </div>
     </div>
 
     <!-- ── About ── -->
@@ -213,6 +217,18 @@
     </footer>
 
     <script>
+        // Feature card click toggle (purple ↔ white)
+        const featureCards = document.querySelectorAll('.feature_2, .feature_3');
+        featureCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const isActive = card.classList.contains('card-active');
+                // Reset all toggleable cards first
+                featureCards.forEach(c => c.classList.remove('card-active'));
+                // If it wasn't active, activate it
+                if (!isActive) card.classList.add('card-active');
+            });
+        });
+
         // Mobile menu toggle
         const toggle = document.getElementById('menu-toggle');
         const navbar = document.querySelector('.navbar');

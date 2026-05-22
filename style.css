@@ -125,13 +125,21 @@ body {
 }
 
 /* ============================================================
+   HERO FEATURES WRAPPER
+   ============================================================ */
+.hero-features-wrapper {
+  background: var(--primary);
+  padding-bottom: 5rem;
+}
+
+/* ============================================================
    HERO
    ============================================================ */
 .hero {
-  background: var(--primary);
+  background: transparent;
   color: var(--text-light);
   text-align: left;
-  padding: clamp(4rem, 12vw, 10rem) 0 clamp(6rem, 14vw, 14rem);
+  padding: clamp(4rem, 12vw, 10rem) 0 3rem;
 }
 
 .hero .container {
@@ -164,10 +172,10 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: -4rem;
+  margin-top: 0;
   position: relative;
   z-index: 2;
-  padding-bottom: 2rem;
+  padding-bottom: 0;
 }
 
 .feature_1,
@@ -185,19 +193,19 @@ body {
 
 .feature_2,
 .feature_3 {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.12);
   color: var(--text-light);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.feature_2:hover,
-.feature_3:hover {
+.feature_2.card-active,
+.feature_3.card-active {
   background: var(--bg-light);
   color: var(--text-dark);
+  border-color: transparent;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  border-top: 1px solid transparent;
 }
 
 .feature_1 h3,
@@ -522,27 +530,27 @@ body {
    ============================================================ */
 @media (max-width: 768px) {
 
-  /* On mobile: [☰] .............. [SIGN UP FREE] [STARTUPLY.] */
+  /* On mobile: [STARTUPLY.] .............. [☰] [SIGN UP FREE] */
   .navbar {
     flex-wrap: wrap;
   }
 
-  .menu-toggle {
-    display: block;
+  .logo {
     order: 1;
   }
 
-  .nav-buttons {
-    order: 4;   /* dropdown sits below the top bar */
-  }
-
-  .button {
+  .menu-toggle {
+    display: block;
     order: 2;
     margin-left: auto;
   }
 
-  .logo {
+  .button {
     order: 3;
+  }
+
+  .nav-buttons {
+    order: 4;   /* dropdown sits below the top bar */
   }
 
   .nav-buttons {
@@ -585,14 +593,14 @@ body {
 
   /* Features */
   .features {
-    margin-top: 1rem;
+    margin-top: 0;
     grid-template-columns: 1fr;
   }
 
   .feature_2,
   .feature_3 {
-    color: var(--text-dark);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   /* About */

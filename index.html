@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STARTUPLY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,18 +28,18 @@
     </nav>
     
     <section id="home" class="hero">
-
-        <p class="tagline">
-            WE ARE HARD, WE PAY HARD
-        </p>
-        <h1>
-            WE ARE A DESIGN & <br>DEVELOPMENT AGENCY.
-        </h1>
-        <p class="hero-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-
+        <div class="container">
+            <p class="tagline">
+                WE ARE HARD, WE PAY HARD
+            </p>
+            <h1>
+                WE ARE A DESIGN &amp; <br>DEVELOPMENT AGENCY.
+            </h1>
+            <p class="hero-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
     </section>
     <div class="features container">
 
@@ -107,7 +110,7 @@
         </div>
     </section>
 
-    <section class = "projects container">
+    <section id="projects" class="projects container">
         <div class = "section-header">
             <div>
                 <p class = "section-subtitle">OUR AWESOME WORK</p>
@@ -157,8 +160,7 @@
         </div>
 
     </section>
-s
-    <section class = "Achivement">
+    <section id="achievement" class="Achivement">
         <div class = "overlay"></div>
         <div class = "container stats-content">
             <div>
@@ -188,7 +190,7 @@ s
         </div>
     </section>
 
-    <section class = "blog container">
+    <section id="blog" class="blog container">
         <div class = "center">
             <p class = "section-subtitle">OUR BLOG</p>
             <h2>Latest News</h2>
@@ -239,17 +241,69 @@ s
     </footer>
 
 <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navbar = document.querySelector('.navbar');
-    const body = document.body;
+    // ── Mobile menu toggle ──────────────────────────────────────────
+    const toggle  = document.getElementById('menu-toggle');
+    const navbar  = document.querySelector('.navbar');
+    const body    = document.body;
+    const navList = document.querySelector('.nav-buttons');
+
     toggle.addEventListener('click', () => {
         const isOpen = navbar.classList.toggle('open');
-        // Toggle body overflow lock
-        if (isOpen) {
-            body.classList.add('menu-open');
-        } else {
-            body.classList.remove('menu-open');
-        }
+        body.classList.toggle('menu-open', isOpen);
     });
+
+    // ── Close menu instantly and scroll to section ──────────────────
+    document.querySelectorAll('.nav-buttons a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+
+            // Only intercept in-page anchor links
+            if (href && href.startsWith('#')) {
+                e.preventDefault(); // stop browser from scrolling while menu is open
+
+                // 1. Close the menu immediately
+                navbar.classList.remove('open');
+                body.classList.remove('menu-open');
+
+                // 2. Wait one frame for repaint, then scroll
+                requestAnimationFrame(() => {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = navbar.offsetHeight; // navbar height
+                        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            } else {
+                // External page link — just close the menu
+                navbar.classList.remove('open');
+                body.classList.remove('menu-open');
+            }
+        });
+    });
+
+    // ── Active link highlighting via IntersectionObserver ───────────
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-buttons a[href^="#"]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-80px 0px -40% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
 </script>
 </html>

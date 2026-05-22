@@ -414,6 +414,9 @@ body {
     justify-content: center;
     height: calc(100vh - 80px);
   }
+  .navbar.open .nav-buttons {
+    display: flex;
+  }
   .navbar.open .nav-buttons li {
     margin: 1rem 0;
   }

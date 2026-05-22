@@ -8,6 +8,7 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     color: #333;
+    padding-top: 80px; /* offset fixed navbar */
 }
 
 .container {
@@ -25,14 +26,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
-    padding: 20px;
-    z-index: 10;
+    padding: 20px 40px;
+    background: #7641FC;
+    z-index: 1000;
 }
+
 
 .logo {
     font-size: 24px;
@@ -394,15 +396,21 @@ body {
 }
 
 /* Responsive Media Queries */
+* {
+    box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        gap: 15px;
-        position: relative;
-        background: #7641FC;
-        padding: 15px;
-        transform: none;
+        position: static;
         left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        background: #7641FC;
+        padding: 10px 20px;
+        align-items: center;
+        text-align: center;
     }
     
     .nav-buttons {
@@ -410,13 +418,17 @@ body {
         justify-content: center;
         gap: 10px;
     }
+.project-card img {
+    height: auto;
+    object-fit: cover;
+}
     
     .hero {
-        padding: 60px 0 50px;
+        padding: 80px 0 60px;
     }
-    
+
     .hero h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
     
     .features {

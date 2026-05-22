@@ -273,7 +273,8 @@ body {
 }
 
 .project-card {
-  background: var(--text-light);
+  background: var(--primary);
+  color: var(--text-light);
   border-radius: 0.25rem;
   overflow: hidden;
 }
@@ -402,17 +403,20 @@ body {
   .menu-toggle {
     display: block;
   }
+  /* Mobile navigation menu styling */
   .nav-buttons {
     display: none;
     flex-direction: column;
     width: 100%;
     background: var(--primary);
-    position: absolute;
-    top: 100%;
+    position: fixed; /* cover viewport */
+    top: 80px; /* below fixed navbar */
     left: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: calc(100vh - 80px);
+    padding-top: 1rem;
+    z-index: 9999;
   }
   .navbar.open .nav-buttons {
     display: flex;
@@ -420,6 +424,7 @@ body {
   .navbar.open .nav-buttons li {
     margin: 1rem 0;
   }
+
 }
 
 /* Prevent background scrolling when mobile menu is open */
